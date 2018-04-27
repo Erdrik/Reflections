@@ -215,7 +215,7 @@ Prefab:
     - target: {fileID: 114555257791525064, guid: 9a2cc102f2cdfcd4c857746f9b9081c5,
         type: 2}
       propertyPath: _data._json
-      value: '{"declarations":{"collection":{"$content":[{"name":"MyWall","value":{"$content":0,"$type":"UnityEngine.GameObject"},"$version":"A"},{"name":"WallType","value":{"$content":false,"$type":"System.Boolean"},"$version":"A"},{"name":"WallMove","value":{"$content":1,"$type":"UnityEngine.GameObject"},"$version":"A"},{"name":"MoveSpeed","value":{"$content":7.0,"$type":"System.Single"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+      value: '{"declarations":{"collection":{"$content":[{"name":"MyWall","value":{"$content":0,"$type":"UnityEngine.GameObject"},"$version":"A"},{"name":"WallType","value":{"$content":false,"$type":"System.Boolean"},"$version":"A"},{"name":"WallMove","value":{"$content":1,"$type":"UnityEngine.GameObject"},"$version":"A"},{"name":"MoveSpeed","value":{"$content":7.0,"$type":"System.Single"},"$version":"A"},{"name":"OriginPosition","value":{"x":0.0,"y":0.0,"$type":"UnityEngine.Vector2"},"$version":"A"},{"name":"ButtonPressed","value":{"$content":false,"$type":"System.Boolean"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
       objectReference: {fileID: 0}
     - target: {fileID: 114555257791525064, guid: 9a2cc102f2cdfcd4c857746f9b9081c5,
         type: 2}
@@ -471,6 +471,21 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 212462922879447736, guid: 1ece7826f3c9d3a4c9b3897846edba67,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.75735295
+      objectReference: {fileID: 0}
+    - target: {fileID: 212462922879447736, guid: 1ece7826f3c9d3a4c9b3897846edba67,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.0612565
+      objectReference: {fileID: 0}
+    - target: {fileID: 212462922879447736, guid: 1ece7826f3c9d3a4c9b3897846edba67,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.10446247
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1ece7826f3c9d3a4c9b3897846edba67, type: 2}
   m_IsPrefabParent: 0
@@ -550,9 +565,44 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 50784777734838666, guid: a21e5f6e8f17bd740aad01a5236c6823,
+        type: 2}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a21e5f6e8f17bd740aad01a5236c6823, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1917424070 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1099416339920716, guid: 1ece7826f3c9d3a4c9b3897846edba67,
+    type: 2}
+  m_PrefabInternal: {fileID: 1588753865}
+--- !u!61 &1917424072
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1917424070}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.16, y: 0.16}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.16, y: 0.16}
+  m_EdgeRadius: 0
 --- !u!1 &2129138197 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1234559786136954, guid: 1ece7826f3c9d3a4c9b3897846edba67,
