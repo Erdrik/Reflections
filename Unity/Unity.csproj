@@ -330,6 +330,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\CyberpunkHeroBody.cs" />
     <Compile Include="Assets\Ludiq\Ludiq.Core\Generated\Property Providers\PropertyProvider_UnityEngine_EventSystems_EventTrigger_TriggerEvent.cs" />
     <Compile Include="Assets\Ludiq\Ludiq.Core\Generated\Property Providers\PropertyProvider_UnityEngine_UI_AnimationTriggers.cs" />
     <Compile Include="Assets\Ludiq\Ludiq.Core\Generated\Property Providers\PropertyProvider_UnityEngine_UI_Button_ButtonClickedEvent.cs" />
