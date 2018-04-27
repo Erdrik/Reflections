@@ -2,12 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour {
+
+
+public class Projectile : MonoBehaviour, IProjectileReciever {
 
     public struct BulletLine
     {
         public List<Vector2> _points;
         public float _distance;
+    }
+
+    public struct ProjectileHit
+    {
+        public float _initalDamage;
+        public int _numberOfBounces;
+        public Vector2 _hitNormal;
     }
 
     [SerializeField]
@@ -19,28 +28,17 @@ public class Projectile : MonoBehaviour {
     [SerializeField]
     private List<Color> _graidentColours;
 
+    [SerializeField]
+    private float _initalDamage;
+    
+
+
+    private int _amountOfBounces;
+
 	void Start () {
         BulletLine prediction = PredictDistance(10);
 
-        SetPositionsOnLineRenderer(prediction);
-
-        GetComponent<LineRenderer>().colorGradient = CreateBulletLineGradient(prediction);
-
     }
-
-    void SetPositionsOnLineRenderer(BulletLine line)
-    {
-        GetComponent<LineRenderer>().positionCount = line._points.Count;
-
-        GetComponent<LineRenderer>().SetPosition(0, line._points[0]);
-        for (int i = 1; i < line._points.Count-1; i++)
-        {
-            GetComponent<LineRenderer>().SetPosition(i, line._points[i]);
-        }
-        GetComponent<LineRenderer>().SetPosition(line._points.Count-1, line._points[line._points.Count - 1]);
-
-    }
-
     Gradient CreateBulletLineGradient(BulletLine line)
     {
         if(_graidentColours.Count < 1)
@@ -110,8 +108,9 @@ public class Projectile : MonoBehaviour {
             elapsedDistance += currentVelocity.magnitude * dT;
             float rayDistance = _bulletRadius + currentVelocity.magnitude * dT;
             RaycastHit2D hit = Physics2D.Raycast(currentPosition, currentVelocity.normalized, rayDistance, _bulletInteractionLayers);
-            if (hit)
+            if (hit && hit.collider.gameObject != gameObject)
             {
+                
                 Vector2 reflectedVelocity = Vector2.Reflect(currentVelocity, hit.normal);
                 float reflectedOffset = rayDistance - hit.distance;
 
@@ -132,17 +131,47 @@ public class Projectile : MonoBehaviour {
 
     private void VelocityStep(float dT)
     {
-        float rayDistance = _bulletRadius + _velocity.magnitude * dT;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, _velocity.normalized, rayDistance, _bulletInteractionLayers);
-        if (hit)
+        float movedDistance = 0;
+        do
         {
-            Vector3 reflectedVelocity = Vector2.Reflect(_velocity, hit.normal);
-            float reflectedOffset = rayDistance - hit.distance;
+            float rayDistance = _bulletRadius + dT;
+            RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, _velocity.normalized, rayDistance, _bulletInteractionLayers);
+            foreach (RaycastHit2D hit in hits)
+            {
+                if (hit.collider.gameObject == gameObject)
+                {
+                    continue;
+                }
+                Vector3 reflectedVelocity = Vector2.Reflect(_velocity, hit.normal);
+                float reflectedOffset = rayDistance - hit.distance;
+                ProjectileHit projectileHit = new ProjectileHit()
+                {
+                    _initalDamage = _initalDamage,
+                    _numberOfBounces = _amountOfBounces,
+                    _hitNormal = -hit.normal
+                };
+                Bolt.CustomEvent.Trigger(hit.collider.gameObject, "OnProjectileHit", projectileHit);
+                _amountOfBounces++;
+                _velocity = reflectedVelocity;
+                transform.position += reflectedVelocity.normalized * reflectedOffset;
+                break;
+            }
+            transform.position += new Vector3(_velocity.x, _velocity.y).normalized * dT;
+            movedDistance += dT;
 
-            _velocity = reflectedVelocity;
-            transform.position += reflectedVelocity.normalized * reflectedOffset;
-        }
-        transform.position += new Vector3(_velocity.x, _velocity.y) * dT;
+        } while (movedDistance < _velocity.magnitude * dT);
+    }
 
+    
+
+    public void DestroyProjectile()
+    {
+        Destroy(gameObject);
+    }
+
+    public void OnProjectileHit(ProjectileHit hit)
+    {
+        Vector3 reflectedVelocity = Vector2.Reflect(_velocity, hit._hitNormal);
+        _velocity = reflectedVelocity;
     }
 }
