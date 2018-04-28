@@ -356,6 +356,105 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 505960a02f0a5404394ea2f5238a6a63, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &956110007
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4673914050194754, guid: 836d5c0f2261c144c9180648c1701f55, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -2.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 4673914050194754, guid: 836d5c0f2261c144c9180648c1701f55, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4673914050194754, guid: 836d5c0f2261c144c9180648c1701f55, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4673914050194754, guid: 836d5c0f2261c144c9180648c1701f55, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4673914050194754, guid: 836d5c0f2261c144c9180648c1701f55, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4673914050194754, guid: 836d5c0f2261c144c9180648c1701f55, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4673914050194754, guid: 836d5c0f2261c144c9180648c1701f55, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4673914050194754, guid: 836d5c0f2261c144c9180648c1701f55, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 212882998067366294, guid: 836d5c0f2261c144c9180648c1701f55,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212882998067366294, guid: 836d5c0f2261c144c9180648c1701f55,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212882998067366294, guid: 836d5c0f2261c144c9180648c1701f55,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212908022205996764, guid: 836d5c0f2261c144c9180648c1701f55,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fc59ae84aa60e71489b518bca6c07362,
+        type: 3}
+    - target: {fileID: 212979276548384866, guid: 836d5c0f2261c144c9180648c1701f55,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ecddddbe4615e804ea542fc9630a5b49,
+        type: 3}
+    - target: {fileID: 1040659082507330, guid: 836d5c0f2261c144c9180648c1701f55, type: 2}
+      propertyPath: m_Name
+      value: CyberpunkBadguyInvertBody
+      objectReference: {fileID: 0}
+    - target: {fileID: 212882998067366294, guid: 836d5c0f2261c144c9180648c1701f55,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d77d58166ca698945b2ae8c0990b24b7,
+        type: 3}
+    - target: {fileID: 212979276548384866, guid: 836d5c0f2261c144c9180648c1701f55,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212979276548384866, guid: 836d5c0f2261c144c9180648c1701f55,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212979276548384866, guid: 836d5c0f2261c144c9180648c1701f55,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 95651541326007812, guid: 836d5c0f2261c144c9180648c1701f55,
+        type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 80c8e3f3336a1d54ab3981c5c6b9bdc8, type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 836d5c0f2261c144c9180648c1701f55, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1074674187
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,9 +12,6 @@ public class GlowEffect : MonoBehaviour {
 
     private static List<GlowHit> _hits = new List<GlowHit>();
 
-    [SerializeField]
-    private Material _effectMaterial;
-
     public static void RegisterHit(Vector3 hitPoint)
     {
         _hits.Add(new GlowHit() {

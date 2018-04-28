@@ -171,6 +171,9 @@ MonoBehaviour:
   _killDistance: 40
   _hitGameObject: {fileID: 1027726001791434, guid: f2366d2cf57dfc24e94b5263992d3c6c,
     type: 2}
+  _deathGameObject: {fileID: 1535993025067458, guid: 0a74853ff544d0c4e8cf6d7dd29a5910,
+    type: 2}
+  _gridColour: {r: 1, g: 0, b: 0, a: 1}
   _initalDamage: 0
 --- !u!212 &212399489133332006
 SpriteRenderer:
