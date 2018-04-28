@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Name: Baddie
   m_EditorClassIdentifier: 
   _data:
-    _json: '{"graph":{"variables":{"collection":{"$content":[],"$version":"A"},"$version":"A"},"controlInputDefinitions":[],"controlOutputDefinitions":[],"valueInputDefinitions":[],"valueOutputDefinitions":[],"pan":{"x":0.0,"y":0.0},"zoom":1.0,"elements":[{"defaultValues":{},"position":{"x":-204.0,"y":-144.0},"guid":"95f40fc2-97b3-4c3e-a07a-640c0e70ba57","$version":"A","$type":"Bolt.Start"},{"defaultValues":{},"position":{"x":-204.0,"y":60.0},"guid":"abae6cf6-5710-4483-9d3b-786215e5f5d7","$version":"A","$type":"Bolt.Update"}],"title":null,"summary":null,"$version":"A"}}'
-    _objectReferences: []
+    _json: '{"graph":{"variables":{"collection":{"$content":[],"$version":"A"},"$version":"A"},"controlInputDefinitions":[],"controlOutputDefinitions":[],"valueInputDefinitions":[],"valueOutputDefinitions":[],"pan":{"x":-87.31784,"y":551.631},"zoom":0.9,"elements":[{"nest":{"source":"Macro","macro":0,"embed":null},"defaultValues":{},"position":{"x":-187.0,"y":451.0},"guid":"52f0e127-599d-46ae-a490-1a8e24ab90ee","$version":"A","$type":"Bolt.SuperUnit"}],"title":"Evil
+      Life","summary":"Handles the enemy health.","$version":"A"}}'
+    _objectReferences:
+    - {fileID: 11400000, guid: e5384af4cc2204943ab47339b3b03cc3, type: 2}
