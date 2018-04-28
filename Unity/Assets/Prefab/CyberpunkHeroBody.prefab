@@ -160,8 +160,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 95618021057472654}
+  _renderers: []
   _moving: 0
   _action: 0
+  _defaultColour: {r: 0, g: 0, b: 0, a: 0}
+  _flashColour: {r: 0, g: 0, b: 0, a: 0}
+  _flashStart: 0
+  _flashEnd: 0
 --- !u!212 &212179193408159550
 SpriteRenderer:
   m_ObjectHideFlags: 1
