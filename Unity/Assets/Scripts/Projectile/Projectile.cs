@@ -30,6 +30,10 @@ public class Projectile : MonoBehaviour, IProjectileReciever {
     [SerializeField]
     private float _killDistance = 40;
     [SerializeField]
+    private List<Color> _bounceColours = new List<Color>() { new Color(0, 0, 0, 0.2f) };
+    [SerializeField]
+    private GameObject _trailGameObject;
+    [SerializeField]
     private GameObject _hitGameObject;
     [SerializeField]
     private GameObject _deathGameObject;
@@ -65,6 +69,7 @@ public class Projectile : MonoBehaviour, IProjectileReciever {
     public void Launch(Vector2 intialVelocity)
     {
         _velocity = intialVelocity;
+        SetColour(0);
     }
 
     public BulletLine PredictDistance(Vector2 position, Vector2 velocity, float distance, float dT = 0)
@@ -146,9 +151,13 @@ public class Projectile : MonoBehaviour, IProjectileReciever {
 
                 GlowEffect.RegisterHit(hit.point);
 
-                Instantiate(_hitGameObject, hit.point, Quaternion.LookRotation(hit.normal, Vector2.up));
-
                 _amountOfBounces++;
+                SetColour(_amountOfBounces);
+
+                ParticleSystem p = Instantiate(_hitGameObject, hit.point, Quaternion.LookRotation(hit.normal, Vector2.up)).GetComponent<ParticleSystem>();
+                ParticleSystem.MainModule m = p.main;
+                m.startColor = new Color(_gridColour.r, _gridColour.g, _gridColour.b, 1);
+
                 _velocity = reflectedVelocity;
                 transform.position += reflectedVelocity.normalized * reflectedOffset;
                 break;
@@ -162,8 +171,35 @@ public class Projectile : MonoBehaviour, IProjectileReciever {
             DestroyProjectile();
         }
     }
-
     
+    private void SetColour(int bounce)
+    {
+        if(bounce < _bounceColours.Count)
+        {
+            SetColour(_bounceColours[bounce]);
+        }
+        else
+        {
+            SetColour(_bounceColours[_bounceColours.Count - 1]);
+        }
+    }
+
+    private void SetColour(Color colour)
+    {
+        SwapTrailRenderer(colour);
+        _gridColour = colour;
+    }
+
+    private void SwapTrailRenderer(Color newColor)
+    {
+        _trailGameObject.transform.parent = null;
+        Destroy(_trailGameObject, 1.7f);
+        _trailGameObject = Instantiate(_trailGameObject, transform.position, Quaternion.identity, transform);
+        _trailGameObject.GetComponent<TrailRenderer>().startColor = newColor;
+        _trailGameObject.GetComponent<TrailRenderer>().endColor = newColor;
+        _trailGameObject.GetComponent<TrailRenderer>().colorGradient.alphaKeys[0].alpha = newColor.a;
+        _trailGameObject.GetComponent<TrailRenderer>().endWidth = 0.2f;
+    }
 
     public void DestroyProjectile()
     {

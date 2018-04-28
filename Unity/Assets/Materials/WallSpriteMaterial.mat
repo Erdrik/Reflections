@@ -62,10 +62,13 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
+    - _GridScale: 0.2
+    - _GridThickness: 2.92
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _RingIntensity: 0.71
     - _RingThickness: 0.14
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
