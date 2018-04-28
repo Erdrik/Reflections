@@ -37,7 +37,7 @@ public class GlowEffect : MonoBehaviour {
                 _hits.RemoveAt(i);
             }
         }
-        _effectMaterial.SetVectorArray("_HitPoints", ConvertListToVector4(_hits));
+        Shader.SetGlobalVectorArray("_HitPoints", ConvertListToVector4(_hits));
     }
 
     private static Vector4[] ConvertListToVector4(List<GlowHit> hits)
