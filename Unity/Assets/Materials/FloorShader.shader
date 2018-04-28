@@ -3,6 +3,7 @@
 		_Color("Color", Color) = (1,1,1,1)
 		_GridColour("Grid Colour", Color) = (1,0,0,1)
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
+		_NoiseTex("Noise Tex", 2D) = "white"{}
 		_Glossiness("Smoothness", Range(0,1)) = 0.5
 		_Metallic("Metallic", Range(0,1)) = 0.0
 		_GridThickness("Grid Thickness", Float) = 1.0
@@ -22,9 +23,11 @@
 		#pragma target 3.0
 
 		sampler2D _MainTex;
+		sampler2D _NoiseTex;
 
 		struct Input {
 			float2 uv_MainTex;
+			float2 uv_NoiseTex;
 			float3 worldPos;
 		};
 
@@ -74,8 +77,12 @@
 				}
 			}
 
+			float2 uv = IN.uv_MainTex + float2(_Time.x, _Time.x);
+			float noise = tex2D(_NoiseTex, uv).r;
+			float4 _colourNoise = float4(1,1,1,1) * 1.0f * (noise * noise * noise);
+
 			// Albedo comes from a texture tinted by color
-			fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * lerp(_Color, _GridColour + _addedColour, gridAlpha);
+			fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * lerp(_Color, _GridColour + _addedColour + _colourNoise, gridAlpha);
 			o.Albedo = c.rgb;
 			// Metallic and smoothness come from slider variables
 			o.Metallic = _Metallic;

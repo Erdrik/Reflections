@@ -3,6 +3,9 @@
 		_Color("Color", Color) = (1,1,1,1)
 		_BounceColour("Bounce Colour", Color) = (1,1,1,1)
 		_RingThickness("Ring Thickness", Float) = 0.2
+		_RingIntensity("Ring Intensity", Float) = 0.7
+		_GridThickness("Grid Thickness", Float) = 1.0
+		_GridScale("Grid Scale", Float) = 1
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
 		_Glossiness ("Smoothness", Range(0,1)) = 0.5
 		_Metallic ("Metallic", Range(0,1)) = 0.0
@@ -27,6 +30,9 @@
 
 		float _maxDistance = 5.f;
 		float _RingThickness;
+		float _RingIntensity;
+		float _GridThickness;
+		float _GridScale;
 		half _Glossiness;
 		half _Metallic;
 		fixed4 _Color;
@@ -44,11 +50,19 @@
 			// Albedo comes from a texture tinted by color
 			fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
 
+			// Pick a coordinate to visualize in a grid
+			float2 coord = IN.worldPos.xy / _GridScale;
+
+			// Compute anti-aliased world-space grid lines
+			float2 grid = abs(frac(coord - 0.5) - 0.5) / fwidth(coord*_GridThickness);
+			float gridLine = min(grid.x, grid.y);
+
 			for (int j = 0; j < 100; j++) {
 
 				float dist = distance(_HitPoints[j].xy, IN.worldPos.xy)/5;
 				if (dist < _HitPoints[j].w && dist > _HitPoints[j].w - _RingThickness) {
-					c += _BounceColour * (0.5f * -(dist-5)/5);
+					float smooth = smoothstep(_HitPoints[j].w -_RingThickness, _HitPoints[j].w, dist) / dist;
+					c += _BounceColour * (_RingIntensity * -(dist-5)/5) * min(gridLine, 1.0) * smooth;
 				}
 			}
 
