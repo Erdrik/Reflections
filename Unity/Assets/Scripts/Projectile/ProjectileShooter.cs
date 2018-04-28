@@ -21,6 +21,7 @@ public class ProjectileShooter : MonoBehaviour {
     public void ShootProjectile(Vector2 velocity)
     {
         Projectile projectile = Instantiate(_projectilePrefab, transform.position, Quaternion.identity);
+        FloorGlowEffect.RegisterBullet(projectile);
         projectile.Launch(velocity);
     }
 	

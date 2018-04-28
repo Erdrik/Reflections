@@ -31,6 +31,10 @@ public class Projectile : MonoBehaviour, IProjectileReciever {
     private float _killDistance = 40;
     [SerializeField]
     private GameObject _hitGameObject;
+    [SerializeField]
+    private GameObject _deathGameObject;
+    [SerializeField]
+    public Color _gridColour = Color.red;
 
     [SerializeField]
     private float _initalDamage;
@@ -39,6 +43,7 @@ public class Projectile : MonoBehaviour, IProjectileReciever {
 
     private float _totalElapsedDistance;
     private int _amountOfBounces;
+    private bool _dead = false;
 
 	void Start () {
 
@@ -46,7 +51,15 @@ public class Projectile : MonoBehaviour, IProjectileReciever {
 
     private void FixedUpdate()
     {
-        VelocityStep(Time.fixedDeltaTime);
+        if (!_dead)
+        {
+            VelocityStep(Time.fixedDeltaTime);
+        }
+        else
+        {
+            _gridColour.a -= (1.7f/Time.fixedDeltaTime);
+            _gridColour.a = Mathf.Max(0, _gridColour.a);
+        }
     }
 
     public void Launch(Vector2 intialVelocity)
@@ -79,7 +92,7 @@ public class Projectile : MonoBehaviour, IProjectileReciever {
             RaycastHit2D[] hits = Physics2D.RaycastAll(currentPosition, currentVelocity.normalized, rayDistance, _bulletInteractionLayers);
             foreach (RaycastHit2D hit in hits)
             {
-                if (hit.collider.gameObject == gameObject)
+                if (hit.collider.gameObject == gameObject || hit.collider.isTrigger)
                 {
                     continue;
                 }
@@ -111,7 +124,7 @@ public class Projectile : MonoBehaviour, IProjectileReciever {
             RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, _velocity.normalized, rayDistance, _bulletInteractionLayers);
             foreach (RaycastHit2D hit in hits)
             {
-                if (hit.collider.gameObject == gameObject)
+                if (hit.collider.gameObject == gameObject || hit.collider.isTrigger)
                 {
                     continue;
                 }
@@ -146,7 +159,7 @@ public class Projectile : MonoBehaviour, IProjectileReciever {
         } while (movedDistance < _velocity.magnitude * dT);
         _totalElapsedDistance += movedDistance;
         if(_totalElapsedDistance > _killDistance) {
-            Destroy(gameObject);
+            DestroyProjectile();
         }
     }
 
@@ -154,7 +167,11 @@ public class Projectile : MonoBehaviour, IProjectileReciever {
 
     public void DestroyProjectile()
     {
-        Destroy(gameObject);
+        _dead = true;
+        Destroy(GetComponent<CircleCollider2D>());
+        Destroy(GetComponent<SpriteRenderer>());
+        Instantiate(_deathGameObject, transform.position, Quaternion.LookRotation(_velocity.normalized, Vector2.up));
+        Destroy(gameObject,1.7f);
     }
 
     public void OnProjectileHit(ProjectileHit hit)

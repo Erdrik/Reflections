@@ -344,6 +344,7 @@
     <Compile Include="Assets\PostProcessing\Runtime\Utils\MaterialFactory.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Utils\RenderTextureFactory.cs" />
     <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
+    <Compile Include="Assets\Scripts\GlowEffect\FloorGlowEffect.cs" />
     <Compile Include="Assets\Scripts\GlowEffect\GlowEffect.cs" />
     <Compile Include="Assets\Scripts\Projectile\IProjectileReciever.cs" />
     <Compile Include="Assets\Scripts\Projectile\Projectile.cs" />
@@ -423,6 +424,7 @@
     <None Include="Assets\Ludiq\Ludiq.Core\DotNetDocumentation\System.xml" />
     <None Include="Assets\Ludiq\Ludiq.Core\DotNetDocumentation\mscorlib.xml" />
     <None Include="Assets\Materials\BulletLine\LineShader.shader" />
+    <None Include="Assets\Materials\FloorShader.shader" />
     <None Include="Assets\Materials\GlowEffectShader.shader" />
     <None Include="Assets\Materials\WallShader.shader" />
     <None Include="Assets\PostProcessing\Editor Resources\Monitors\HistogramCompute.compute" />

@@ -454,6 +454,7 @@
     <None Include="Assets\Ludiq\Ludiq.Core\DotNetDocumentation\System.xml" />
     <None Include="Assets\Ludiq\Ludiq.Core\DotNetDocumentation\mscorlib.xml" />
     <None Include="Assets\Materials\BulletLine\LineShader.shader" />
+    <None Include="Assets\Materials\FloorShader.shader" />
     <None Include="Assets\Materials\GlowEffectShader.shader" />
     <None Include="Assets\Materials\WallShader.shader" />
     <None Include="Assets\PostProcessing\Editor Resources\Monitors\HistogramCompute.compute" />
