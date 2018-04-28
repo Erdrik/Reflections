@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 58684439684166558}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bulletInteractionLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294967039
   _minInteractionDistance: 0.1
   _bulletRadius: 0.1
   _velocity: {x: 5.33, y: 0}
