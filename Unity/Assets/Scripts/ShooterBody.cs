@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CyberpunkHeroBody : MonoBehaviour {
+public class ShooterBody : MonoBehaviour {
 
     [SerializeField]
     private Animator _animator;
