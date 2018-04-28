@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114296987876741386}
   - component: {fileID: 212399489133332006}
   - component: {fileID: 96111137059631754}
+  - component: {fileID: 58684439684166558}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -42,6 +43,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &58684439684166558
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1521138509896142}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!96 &96111137059631754
 TrailRenderer:
   serializedVersion: 2
@@ -149,13 +165,11 @@ MonoBehaviour:
   _bulletInteractionLayers:
     serializedVersion: 2
     m_Bits: 4294967295
+  _minInteractionDistance: 0.1
   _bulletRadius: 0.1
   _velocity: {x: 5.33, y: 0}
-  _graidentColours:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 0.04827571, b: 1, a: 1}
-  - {r: 0.90344834, g: 1, b: 0, a: 1}
-  - {r: 0.9034486, g: 0, b: 1, a: 1}
+  _hitGameObject: {fileID: 1027726001791434, guid: f2366d2cf57dfc24e94b5263992d3c6c,
+    type: 2}
   _initalDamage: 0
 --- !u!212 &212399489133332006
 SpriteRenderer:
