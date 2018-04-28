@@ -17,6 +17,7 @@ public class Projectile : MonoBehaviour, IProjectileReciever {
         public float _initalDamage;
         public int _numberOfBounces;
         public Vector2 _hitNormal;
+        public Projectile _projectile;
     }
 
     [SerializeField]
@@ -139,7 +140,8 @@ public class Projectile : MonoBehaviour, IProjectileReciever {
                 {
                     _initalDamage = _initalDamage,
                     _numberOfBounces = _amountOfBounces,
-                    _hitNormal = -hit.normal
+                    _hitNormal = -hit.normal,
+                    _projectile = this
                 };
                 Bolt.CustomEvent.Trigger(hit.collider.gameObject, "OnProjectileHit", projectileHit);
 
@@ -149,7 +151,7 @@ public class Projectile : MonoBehaviour, IProjectileReciever {
                     rev.OnProjectileHit(projectileHit);
                 }
 
-                GlowEffect.RegisterHit(hit.point);
+                GlowEffect.RegisterHit(hit.point, _gridColour);
 
                 _amountOfBounces++;
                 SetColour(_amountOfBounces);
