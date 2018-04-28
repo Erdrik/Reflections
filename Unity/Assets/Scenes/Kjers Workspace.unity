@@ -231,10 +231,6 @@ Prefab:
       propertyPath: m_Name
       value: Wall (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 4020271369054450, guid: 166352fb1370aa2449df90eacf9c2639, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 90
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 166352fb1370aa2449df90eacf9c2639, type: 2}
   m_IsPrefabParent: 0
@@ -449,6 +445,10 @@ Prefab:
       propertyPath: m_Name
       value: Wall_Move
       objectReference: {fileID: 0}
+    - target: {fileID: 4072054482009914, guid: 1ece7826f3c9d3a4c9b3897846edba67, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1ece7826f3c9d3a4c9b3897846edba67, type: 2}
   m_IsPrefabParent: 0
@@ -604,6 +604,26 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 683560153}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &715831055 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1180030151110416, guid: 5881cfa42999f2348a0eccd8be916d13,
+    type: 2}
+  m_PrefabInternal: {fileID: 2106967594}
+--- !u!58 &715831056
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 715831055}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.4}
+  serializedVersion: 2
+  m_Radius: 0.8
 --- !u!1 &721690073
 GameObject:
   m_ObjectHideFlags: 0
@@ -1487,7 +1507,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1923934555}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.18, z: 0}
+  m_LocalPosition: {x: 0, y: 1.43, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1399273534}
@@ -1756,7 +1776,7 @@ Prefab:
     - target: {fileID: 114624030370967396, guid: 5881cfa42999f2348a0eccd8be916d13,
         type: 2}
       propertyPath: _data._json
-      value: '{"declarations":{"collection":{"$content":[{"name":"Speed","value":{"$content":5,"$type":"System.Int32"},"$version":"A"},{"name":"Health","value":{"$content":5,"$type":"System.Int32"},"$version":"A"},{"name":"ShootPoint","value":{"$content":0,"$type":"UnityEngine.GameObject"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+      value: '{"declarations":{"collection":{"$content":[{"name":"Speed","value":{"$content":5,"$type":"System.Int32"},"$version":"A"},{"name":"Health","value":{"$content":5,"$type":"System.Int32"},"$version":"A"},{"name":"ShootPoint","value":{"$content":0,"$type":"UnityEngine.GameObject"},"$version":"A"},{"name":"ShootWaitTime","value":{"$content":0.0,"$type":"System.Single"},"$version":"A"},{"name":"Ammo","value":{"$content":5,"$type":"System.Int32"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
       objectReference: {fileID: 0}
     - target: {fileID: 1816376901153200, guid: 5881cfa42999f2348a0eccd8be916d13, type: 2}
       propertyPath: m_Layer
@@ -1785,12 +1805,12 @@ Prefab:
     - target: {fileID: 61471934143398912, guid: 5881cfa42999f2348a0eccd8be916d13,
         type: 2}
       propertyPath: m_Size.x
-      value: 1.6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 61471934143398912, guid: 5881cfa42999f2348a0eccd8be916d13,
         type: 2}
       propertyPath: m_Size.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 61471934143398912, guid: 5881cfa42999f2348a0eccd8be916d13,
         type: 2}
@@ -1815,15 +1835,21 @@ Prefab:
     - target: {fileID: 50024437199159934, guid: 5881cfa42999f2348a0eccd8be916d13,
         type: 2}
       propertyPath: m_Constraints
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 50024437199159934, guid: 5881cfa42999f2348a0eccd8be916d13,
         type: 2}
       propertyPath: m_BodyType
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61471934143398912, guid: 5881cfa42999f2348a0eccd8be916d13,
+        type: 2}
+      propertyPath: m_EdgeRadius
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114413038039151244, guid: 5881cfa42999f2348a0eccd8be916d13, type: 2}
+    - {fileID: 61471934143398912, guid: 5881cfa42999f2348a0eccd8be916d13, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 5881cfa42999f2348a0eccd8be916d13, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &2129138197 stripped
