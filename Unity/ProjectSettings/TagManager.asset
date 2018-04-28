@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Button
   - Bullet
+  - Heart
   layers:
   - Default
   - TransparentFX
