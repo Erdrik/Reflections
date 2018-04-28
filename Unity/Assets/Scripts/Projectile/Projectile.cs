@@ -28,14 +28,16 @@ public class Projectile : MonoBehaviour, IProjectileReciever {
     [SerializeField]
     private Vector2 _velocity = new Vector2(1, 0);
     [SerializeField]
+    private float _killDistance = 40;
+    [SerializeField]
     private GameObject _hitGameObject;
 
     [SerializeField]
     private float _initalDamage;
-    
-    
 
 
+
+    private float _totalElapsedDistance;
     private int _amountOfBounces;
 
 	void Start () {
@@ -142,6 +144,10 @@ public class Projectile : MonoBehaviour, IProjectileReciever {
             movedDistance += _minInteractionDistance;
 
         } while (movedDistance < _velocity.magnitude * dT);
+        _totalElapsedDistance += movedDistance;
+        if(_totalElapsedDistance > _killDistance) {
+            Destroy(gameObject);
+        }
     }
 
     
