@@ -149,7 +149,7 @@ public class Projectile : MonoBehaviour, IProjectileReciever {
                     rev.OnProjectileHit(projectileHit);
                 }
 
-                GlowEffect.RegisterHit(hit.point);
+                GlowEffect.RegisterHit(hit.point, _gridColour);
 
                 _amountOfBounces++;
                 SetColour(_amountOfBounces);

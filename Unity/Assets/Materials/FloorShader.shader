@@ -81,8 +81,17 @@
 			float noise = tex2D(_NoiseTex, uv).r;
 			float4 _colourNoise = float4(1,1,1,1) * 1.0f * (noise * noise * noise);
 
+			
+
 			// Albedo comes from a texture tinted by color
 			fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * lerp(_Color, _GridColour + _addedColour + _colourNoise, gridAlpha);
+			
+			/*float4 _edgeColour =
+				(max(0, (0.1 - smoothstep(0, 0.1, IN.uv_MainTex.x)) * 10) +
+					max(0, (smoothstep(0.9, 1, IN.uv_MainTex.x)-0.9f) * 10) ) / 2;
+
+			c += _edgeColour;*/
+
 			o.Albedo = c.rgb;
 			// Metallic and smoothness come from slider variables
 			o.Metallic = _Metallic;

@@ -38,6 +38,7 @@
 		fixed4 _Color;
 		fixed4 _BounceColour;
 		float4 _HitPoints[100];
+		float4 _HitColours[100];
 
 		// Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
 		// See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
@@ -62,7 +63,7 @@
 				float dist = distance(_HitPoints[j].xy, IN.worldPos.xy)/5;
 				if (dist < _HitPoints[j].w && dist > _HitPoints[j].w - _RingThickness) {
 					float smooth = smoothstep(_HitPoints[j].w -_RingThickness, _HitPoints[j].w, dist) / dist;
-					c += _BounceColour * (_RingIntensity * -(dist-5)/5) * min(gridLine, 1.0) * smooth;
+					c += _HitColours[j] * (_RingIntensity * -(dist-5)/5) * min(gridLine, 1.0) * smooth;
 				}
 			}
 
